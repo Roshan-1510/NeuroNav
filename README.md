@@ -251,36 +251,6 @@ For issues and questions:
 ---
 
 **Built with ❤️ for personalized learning experiences**
-
-## Analysis
-
-To analyze user engagement and resource format effectiveness:
-1. Ensure MongoDB and backend are running.
-2. Run analysis script:
-	`python analysis/engagement_analysis.py`
-3. Results will be saved in `analysis/engagement_metrics.csv` and `analysis/summary.txt`.
-	- Metrics include completion %, matching vs. non-matching format engagement, average time spent.
-
-*To be updated at each milestone.*
-
-## Final QA Checklist
-- [ ] Backend and frontend start without errors
-- [ ] Register, login, quiz, roadmap, progress flows work end-to-end
-- [ ] All API endpoints respond as expected
-- [ ] Dashboard shows correct brain type and roadmap progress
-- [ ] Roadmap editing and progress tracking functional
-- [ ] Analysis script runs and outputs metrics
-- [ ] All tests (unit, smoke) pass
-- [ ] No sensitive data in repo
-
-## How to Demo (10 min)
-1. Start MongoDB, backend (`python app.py`), and frontend (`npm run dev`)
-2. Register a new user via `/register`
-3. Login via `/login` (JWT stored)
-4. Take quiz via `/quiz` and submit answers
-5. View dashboard and roadmap
-6. Mark a roadmap step as complete
-7. Edit roadmap steps (add/remove/reorder)
 8. Run analysis script (`python analysis/engagement_analysis.py`)
 9. Run smoke test (`python tests/smoke_test.py`)
 10. Show results in dashboard and analysis folder
