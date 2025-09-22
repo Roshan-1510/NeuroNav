@@ -1,4 +1,4 @@
-# NeuroNav Research Appendix - Milestone 7
+# NeuroNav Research Appendix 
 
 ## Brain Type Model Selection and Theoretical Foundation
 
