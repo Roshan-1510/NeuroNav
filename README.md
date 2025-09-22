@@ -237,18 +237,6 @@ JWT_SECRET_KEY=your_secure_random_string
 4. Push to branch: `git push origin feature/new-feature`
 5. Submit pull request
 
-## 📄 License
-
-MIT License - see LICENSE file for details
-
-## 🆘 Support
-
-For issues and questions:
-- Create an issue in the GitHub repository
-- Check existing issues for solutions
-- Review the setup instructions above
-
----
 
 **Built with ❤️ for personalized learning experiences**
 8. Run analysis script (`python analysis/engagement_analysis.py`)
