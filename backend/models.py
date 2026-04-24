@@ -1,9 +1,18 @@
 from datetime import datetime
 from bson import ObjectId
+<<<<<<< HEAD
 from mongo_utils import create_mongo_client
 
 # MongoDB connection
 client = create_mongo_client()
+=======
+from pymongo import MongoClient
+import os
+
+# MongoDB connection
+mongo_uri = os.getenv('MONGO_URI', 'mongodb://localhost:27017/neuronav')
+client = MongoClient(mongo_uri)
+>>>>>>> f90bd2a678a3c3dfbdbb9b9a8b54a2f88137d77b
 db = client.get_database()
 
 # Collection references

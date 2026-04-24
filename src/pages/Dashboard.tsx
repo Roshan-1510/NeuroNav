@@ -56,6 +56,7 @@ export default function Dashboard() {
     return () => clearInterval(interval);
   }, []);
 
+<<<<<<< HEAD
   useEffect(() => {
     const handleProgressUpdate = () => {
       loadProgressSummary(true);
@@ -65,6 +66,8 @@ export default function Dashboard() {
     return () => window.removeEventListener('neuronav:progress-updated', handleProgressUpdate as EventListener);
   }, []);
 
+=======
+>>>>>>> f90bd2a678a3c3dfbdbb9b9a8b54a2f88137d77b
   // Also refresh when the window gains focus (user returns from other tab/app)
   useEffect(() => {
     const handleFocus = () => {
@@ -345,11 +348,16 @@ export default function Dashboard() {
                 </div>
               ) : progressSummary?.roadmaps.length ? (
                 <div className="space-y-4">
+<<<<<<< HEAD
                   {progressSummary.roadmaps.map((roadmap) => {
                     const roadmapLinkId = roadmap.roadmap_id || (roadmap as unknown as { id?: string; _id?: string }).id || (roadmap as unknown as { id?: string; _id?: string })._id;
 
                     return (
                     <div key={roadmap.roadmap_id || roadmapLinkId} className="border rounded-lg p-4 hover:bg-gray-50 transition-colors">
+=======
+                  {progressSummary.roadmaps.map((roadmap) => (
+                    <div key={roadmap.roadmap_id} className="border rounded-lg p-4 hover:bg-gray-50 transition-colors">
+>>>>>>> f90bd2a678a3c3dfbdbb9b9a8b54a2f88137d77b
                       <div className="flex items-center justify-between mb-2">
                         <h4 className="font-medium">{roadmap.roadmap_title}</h4>
                         <Badge 
@@ -374,8 +382,13 @@ export default function Dashboard() {
                           <Activity className="h-4 w-4 mr-1" />
                           {roadmap.completed_steps}/{roadmap.total_steps} steps completed
                         </div>
+<<<<<<< HEAD
                         <Button size="sm" variant="outline" asChild disabled={!roadmapLinkId}>
                           <Link to={roadmapLinkId ? `/roadmap/${roadmapLinkId}` : '/dashboard'}>
+=======
+                        <Button size="sm" variant="outline" asChild>
+                          <Link to={`/roadmap/${roadmap.roadmap_id}`}>
+>>>>>>> f90bd2a678a3c3dfbdbb9b9a8b54a2f88137d77b
                             {roadmap.completion_percentage === 100 ? 'Review' : 'Continue'}
                           </Link>
                         </Button>
@@ -385,7 +398,11 @@ export default function Dashboard() {
                         {Math.round(roadmap.completion_percentage)}% complete
                       </p>
                     </div>
+<<<<<<< HEAD
                   );})}
+=======
+                  ))}
+>>>>>>> f90bd2a678a3c3dfbdbb9b9a8b54a2f88137d77b
                   
                   <Button variant="outline" className="w-full" asChild>
                     <Link to="/quiz">
@@ -445,8 +462,13 @@ export default function Dashboard() {
                           }
                         </p>
                         <p className="text-xs text-gray-500">
+<<<<<<< HEAD
                             {new Date(roadmap.last_activity || roadmap.created_at || Date.now()).toLocaleDateString()} • {roadmap.completion_percentage}% complete
                           </p>
+=======
+                          {new Date(roadmap.last_activity).toLocaleDateString()} • {roadmap.completion_percentage}% complete
+                        </p>
+>>>>>>> f90bd2a678a3c3dfbdbb9b9a8b54a2f88137d77b
                       </div>
                     </div>
                   ))

@@ -11,6 +11,7 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from config import create_app
 
+<<<<<<< HEAD
 
 def _normalize_resource_type(resource_type):
     """Map arbitrary resource labels into supported resource_type values."""
@@ -27,6 +28,8 @@ def _normalize_resource_type(resource_type):
     }
     return mapping.get(normalized, "article")
 
+=======
+>>>>>>> f90bd2a678a3c3dfbdbb9b9a8b54a2f88137d77b
 def seed_quiz_questions(db):
     """Seed quiz questions for VARK learning style assessment"""
     
@@ -266,8 +269,12 @@ def seed_resources(db):
         resource_doc = {
             "title": r_data["title"],
             "url": r_data["url"],
+<<<<<<< HEAD
             "resource_type": _normalize_resource_type(r_data["type"]),
             "source_type": r_data["type"],
+=======
+            "resource_type": r_data["type"],
+>>>>>>> f90bd2a678a3c3dfbdbb9b9a8b54a2f88137d77b
             "tags": r_data["tags"],
             "est_time": r_data["est_time"],
             "created_at": datetime.utcnow(),
@@ -277,6 +284,7 @@ def seed_resources(db):
     
     print(f"✅ Added {len(resources)} learning resources")
 
+<<<<<<< HEAD
 
 def seed_roadmaps(db):
     """Seed initial roadmap for demo."""
@@ -331,6 +339,8 @@ def seed_progress(db, roadmap_id=None):
 
     print(f"✅ Added {len(progress_data)} demo progress records")
 
+=======
+>>>>>>> f90bd2a678a3c3dfbdbb9b9a8b54a2f88137d77b
 def main():
     """Main seeding function"""
     print("🚀 Starting NeuroNav database seeding...")
@@ -350,22 +360,31 @@ def main():
             # Seed data
             seed_quiz_questions(db)
             seed_resources(db)
+<<<<<<< HEAD
             demo_roadmap_id = seed_roadmaps(db)
             seed_progress(db, demo_roadmap_id)
+=======
+>>>>>>> f90bd2a678a3c3dfbdbb9b9a8b54a2f88137d77b
             
             print("🎉 Database seeding completed successfully!")
             
             # Print summary
             question_count = db.quiz_questions.count_documents({})
             resource_count = db.resources.count_documents({})
+<<<<<<< HEAD
             roadmap_count = db.roadmaps.count_documents({})
             progress_count = db.progress.count_documents({})
+=======
+>>>>>>> f90bd2a678a3c3dfbdbb9b9a8b54a2f88137d77b
             
             print(f"\n📈 Database Summary:")
             print(f"   Quiz Questions: {question_count}")
             print(f"   Learning Resources: {resource_count}")
+<<<<<<< HEAD
             print(f"   Roadmaps: {roadmap_count}")
             print(f"   Progress Records: {progress_count}")
+=======
+>>>>>>> f90bd2a678a3c3dfbdbb9b9a8b54a2f88137d77b
             
             return True
             

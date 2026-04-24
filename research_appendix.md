@@ -117,6 +117,7 @@ NeuroNav's rule-based VARK implementation represents a pragmatic approach to per
 
 The validation methodology establishes a scientific foundation for measuring system effectiveness and provides a pathway for continuous improvement based on empirical evidence rather than theoretical assumptions alone.
 
+<<<<<<< HEAD
 ## Operational Updates (April 2026)
 
 ### Environment Configuration Added
@@ -161,6 +162,8 @@ Backend API paths were stabilized by:
 
 These changes reduce runtime failures in common auth, quiz, roadmap, and progress flows.
 
+=======
+>>>>>>> f90bd2a678a3c3dfbdbb9b9a8b54a2f88137d77b
 ---
 
 **References**:

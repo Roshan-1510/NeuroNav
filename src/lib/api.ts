@@ -55,13 +55,18 @@ export interface RoadmapStep {
   step_number: number;
   title: string;
   description: string;
+<<<<<<< HEAD
   resource_id?: string;
   resource_title?: string;
+=======
+  resource_id: string;
+>>>>>>> f90bd2a678a3c3dfbdbb9b9a8b54a2f88137d77b
   resource_url: string;
   resource_type: string;
   estimated_time_minutes: number;
   tags: string[];
   brain_type_optimized: boolean;
+<<<<<<< HEAD
   mission?: string;
   proof_of_work?: string;
   win_condition?: string;
@@ -90,6 +95,8 @@ export interface RoadmapStep {
     measurable_validation?: string;
     anti_generic_marker?: string;
   };
+=======
+>>>>>>> f90bd2a678a3c3dfbdbb9b9a8b54a2f88137d77b
   completed?: boolean;
   completed_at?: string;
 }
@@ -151,6 +158,7 @@ class ApiError extends Error {
 const handleResponse = async (response: Response) => {
   if (!response.ok) {
     const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
+<<<<<<< HEAD
 
     // Clear stale/invalid auth token immediately when backend returns 401.
     if (response.status === 401) {
@@ -167,6 +175,9 @@ const handleResponse = async (response: Response) => {
       response.status,
       errorData.error || errorData.msg || errorData.message || 'Request failed'
     );
+=======
+    throw new ApiError(response.status, errorData.error || 'Request failed');
+>>>>>>> f90bd2a678a3c3dfbdbb9b9a8b54a2f88137d77b
   }
   return response.json();
 };
@@ -326,6 +337,7 @@ export const roadmapApi = {
     });
     return handleResponse(response);
   },
+<<<<<<< HEAD
 
   regenerateRoadmap: async (roadmapId: string, payload: { goal?: string; brain_type?: string } = {}): Promise<{ message: string; roadmap: Roadmap }> => {
     const response = await fetch(`${API_BASE_URL}/roadmaps/${roadmapId}/regenerate`, {
@@ -338,6 +350,8 @@ export const roadmapApi = {
     });
     return handleResponse(response);
   },
+=======
+>>>>>>> f90bd2a678a3c3dfbdbb9b9a8b54a2f88137d77b
 };
 
 // Admin APIs (for future use)

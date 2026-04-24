@@ -10,7 +10,10 @@ import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Alert, AlertDescription } from '@/components/ui/alert';
+<<<<<<< HEAD
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+=======
+>>>>>>> f90bd2a678a3c3dfbdbb9b9a8b54a2f88137d77b
 import { 
   ArrowLeft, 
   Clock, 
@@ -36,6 +39,7 @@ import {
 import { Roadmap, RoadmapStep, roadmapApi, progressApi } from '@/lib/api';
 import EditStepModal from '@/components/EditStepModal';
 
+<<<<<<< HEAD
 const brainTypeGuidance: Record<string, { title: string; description: string; highlight: string[] }> = {
   visual: {
     title: 'Visual learning path',
@@ -90,6 +94,8 @@ const fallbackResourceByType: Record<string, string> = {
   exercise: 'https://www.kaggle.com/learn',
 };
 
+=======
+>>>>>>> f90bd2a678a3c3dfbdbb9b9a8b54a2f88137d77b
 export default function RoadmapView() {
   const { id } = useParams<{ id: string }>();
   const [roadmap, setRoadmap] = useState<Roadmap | null>(null);
@@ -99,7 +105,10 @@ export default function RoadmapView() {
   const [editingStep, setEditingStep] = useState<RoadmapStep | null>(null);
   const [showAddModal, setShowAddModal] = useState(false);
   const [updatingProgress, setUpdatingProgress] = useState<number | null>(null);
+<<<<<<< HEAD
   const [regenerating, setRegenerating] = useState(false);
+=======
+>>>>>>> f90bd2a678a3c3dfbdbb9b9a8b54a2f88137d77b
 
   useEffect(() => {
     if (id) {
@@ -114,6 +123,7 @@ export default function RoadmapView() {
     setError('');
     try {
       const data = await roadmapApi.getRoadmap(id);
+<<<<<<< HEAD
       const normalizedSteps = Array.isArray(data.steps) ? data.steps : [];
       const safeRoadmap: Roadmap = {
         ...data,
@@ -124,6 +134,9 @@ export default function RoadmapView() {
         daily_time_minutes: data.daily_time_minutes || 45,
       };
       setRoadmap(safeRoadmap);
+=======
+      setRoadmap(data);
+>>>>>>> f90bd2a678a3c3dfbdbb9b9a8b54a2f88137d77b
     } catch (err: unknown) {
       const errorMessage = err instanceof Error ? err.message : 'Failed to load roadmap';
       setError(errorMessage);
@@ -162,7 +175,10 @@ export default function RoadmapView() {
           }
         };
       });
+<<<<<<< HEAD
       window.dispatchEvent(new CustomEvent('neuronav:progress-updated'));
+=======
+>>>>>>> f90bd2a678a3c3dfbdbb9b9a8b54a2f88137d77b
     } catch (err: unknown) {
       const errorMessage = err instanceof Error ? err.message : 'Failed to update progress';
       setError(errorMessage);
@@ -193,7 +209,10 @@ export default function RoadmapView() {
       await loadRoadmap();
       setEditingStep(null);
       setShowAddModal(false);
+<<<<<<< HEAD
       window.dispatchEvent(new CustomEvent('neuronav:progress-updated'));
+=======
+>>>>>>> f90bd2a678a3c3dfbdbb9b9a8b54a2f88137d77b
     } catch (err: unknown) {
       throw new Error(err instanceof Error ? err.message : 'Failed to save step');
     }
@@ -209,7 +228,10 @@ export default function RoadmapView() {
     try {
       await roadmapApi.deleteStep(id, stepNumber);
       await loadRoadmap();
+<<<<<<< HEAD
       window.dispatchEvent(new CustomEvent('neuronav:progress-updated'));
+=======
+>>>>>>> f90bd2a678a3c3dfbdbb9b9a8b54a2f88137d77b
     } catch (err: unknown) {
       const errorMessage = err instanceof Error ? err.message : 'Failed to delete step';
       setError(errorMessage);
@@ -260,6 +282,7 @@ export default function RoadmapView() {
     return colors[type as keyof typeof colors] || 'bg-gray-100 text-gray-700';
   };
 
+<<<<<<< HEAD
   const buildFallbackResourceUrl = (step: RoadmapStep) => {
     const primary = sanitizeExternalUrl(step.resource_url || '');
     if (primary) {
@@ -325,6 +348,11 @@ export default function RoadmapView() {
           100
       )
     : 0;
+=======
+  const progressPercentage = roadmap?.progress_summary?.completion_percentage || 0;
+  const totalTimeMinutes = roadmap?.steps.reduce((sum, step) => sum + step.estimated_time_minutes, 0) || 0;
+  const totalHours = Math.round(totalTimeMinutes / 60 * 10) / 10;
+>>>>>>> f90bd2a678a3c3dfbdbb9b9a8b54a2f88137d77b
 
   if (loading) {
     return (
@@ -371,6 +399,7 @@ export default function RoadmapView() {
   }
 
   return (
+<<<<<<< HEAD
     <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-cyan-50">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-72 bg-[radial-gradient(circle_at_top_left,_rgba(59,130,246,0.18),_transparent_40%),radial-gradient(circle_at_top_right,_rgba(14,165,233,0.16),_transparent_35%)]" />
       <div className="pointer-events-none absolute -left-32 top-40 h-72 w-72 rounded-full bg-blue-200/25 blur-3xl" />
@@ -380,12 +409,21 @@ export default function RoadmapView() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-center justify-between gap-3 py-4">
             <Button variant="ghost" asChild className="shrink-0">
+=======
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+      {/* Header */}
+      <header className="bg-white shadow-sm border-b">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between py-4">
+            <Button variant="ghost" asChild>
+>>>>>>> f90bd2a678a3c3dfbdbb9b9a8b54a2f88137d77b
               <Link to="/dashboard">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Back to Dashboard
               </Link>
             </Button>
             
+<<<<<<< HEAD
             <div className="flex flex-wrap items-center gap-2 sm:gap-3">
               <Badge className="rounded-full bg-blue-100 px-3 py-1 text-blue-800 shadow-sm">
                 {roadmap.brain_type} optimized
@@ -399,6 +437,13 @@ export default function RoadmapView() {
                 {regenerating ? 'Regenerating...' : 'Regenerate for Brain Type'}
               </Button>
               <Button
+=======
+            <div className="flex items-center space-x-4">
+              <Badge className="bg-blue-100 text-blue-800">
+                {roadmap.brain_type} Optimized
+              </Badge>
+              <Button
+>>>>>>> f90bd2a678a3c3dfbdbb9b9a8b54a2f88137d77b
                 variant={editMode ? "default" : "outline"}
                 size="sm"
                 onClick={() => setEditMode(!editMode)}
@@ -429,7 +474,11 @@ export default function RoadmapView() {
         </div>
       </header>
 
+<<<<<<< HEAD
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+=======
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+>>>>>>> f90bd2a678a3c3dfbdbb9b9a8b54a2f88137d77b
         {error && (
           <Alert variant="destructive" className="mb-6">
             <AlertDescription>{error}</AlertDescription>
@@ -437,6 +486,7 @@ export default function RoadmapView() {
         )}
 
         {/* Roadmap Header */}
+<<<<<<< HEAD
         <Card className="mb-8 overflow-hidden border-white/60 bg-white/85 shadow-xl shadow-slate-200/60 backdrop-blur">
           <div className="h-2 bg-gradient-to-r from-blue-500 via-cyan-500 to-emerald-400" />
           <CardHeader className="space-y-4 pb-4">
@@ -540,10 +590,54 @@ export default function RoadmapView() {
               </div>
             </div>
           </CardHeader>
+=======
+        <Card className="mb-8">
+          <CardHeader>
+            <div className="flex items-start justify-between">
+              <div>
+                <CardTitle className="text-2xl mb-2">{roadmap.topic}</CardTitle>
+                <CardDescription className="text-base">
+                  Personalized learning path for {roadmap.brain_type} learners
+                </CardDescription>
+              </div>
+              <Brain className="h-8 w-8 text-blue-600" />
+            </div>
+          </CardHeader>
+          
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-blue-600">{roadmap.steps.length}</div>
+                <div className="text-sm text-gray-600">Learning Steps</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-green-600">{totalHours}h</div>
+                <div className="text-sm text-gray-600">Total Time</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-purple-600">{roadmap.estimated_completion_weeks}</div>
+                <div className="text-sm text-gray-600">Weeks</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-orange-600">{roadmap.daily_time_minutes}min</div>
+                <div className="text-sm text-gray-600">Per Day</div>
+              </div>
+            </div>
+            
+            <div className="space-y-2">
+              <div className="flex justify-between text-sm">
+                <span>Progress: {roadmap.progress_summary?.completed_steps || 0} of {roadmap.steps.length} completed</span>
+                <span>{Math.round(progressPercentage)}%</span>
+              </div>
+              <Progress value={progressPercentage} />
+            </div>
+          </CardContent>
+>>>>>>> f90bd2a678a3c3dfbdbb9b9a8b54a2f88137d77b
         </Card>
 
         {/* Learning Steps */}
         <div className="space-y-6">
+<<<<<<< HEAD
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
               <h2 className="flex items-center text-xl font-semibold text-slate-900">
@@ -556,11 +650,21 @@ export default function RoadmapView() {
             </div>
             {editMode && (
               <Button onClick={() => setShowAddModal(true)} size="sm" className="shrink-0">
+=======
+          <div className="flex items-center justify-between">
+            <h2 className="text-xl font-semibold flex items-center">
+              <Target className="mr-2 h-5 w-5" />
+              Learning Steps
+            </h2>
+            {editMode && (
+              <Button onClick={() => setShowAddModal(true)} size="sm">
+>>>>>>> f90bd2a678a3c3dfbdbb9b9a8b54a2f88137d77b
                 <Plus className="mr-2 h-4 w-4" />
                 Add Step
               </Button>
             )}
           </div>
+<<<<<<< HEAD
 
           {roadmap.steps.length === 0 ? (
             <Card className="border-amber-200 bg-amber-50">
@@ -835,10 +939,73 @@ export default function RoadmapView() {
                                   )}
                                 </div>
                               )}
+=======
+          
+          {roadmap.steps.map((step, index) => {
+            const isCompleted = step.completed || false;
+            const isUpdating = updatingProgress === step.step_number;
+            
+            return (
+              <Card 
+                key={step.step_number} 
+                className={`transition-all duration-200 ${
+                  isCompleted ? 'bg-green-50 border-green-200' : ''
+                }`}
+              >
+                <CardContent className="p-6">
+                  <div className="flex items-start space-x-4">
+                    {/* Progress Checkbox */}
+                    <div className="flex-shrink-0 pt-1">
+                      <Checkbox
+                        checked={isCompleted}
+                        onCheckedChange={(checked) => 
+                          handleProgressToggle(step.step_number, checked as boolean)
+                        }
+                        disabled={isUpdating}
+                        className="w-5 h-5"
+                      />
+                    </div>
+
+                    {/* Step Content */}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between mb-2">
+                        <h3 className={`text-lg font-semibold ${isCompleted ? 'line-through text-gray-500' : ''}`}>
+                          {step.title}
+                        </h3>
+                        <div className="flex items-center space-x-2">
+                          <Badge variant="secondary" className={getResourceColor(step.resource_type)}>
+                            {getResourceIcon(step.resource_type)}
+                            <span className="ml-1 capitalize">{step.resource_type}</span>
+                          </Badge>
+                          {step.brain_type_optimized && (
+                            <Badge variant="outline" className="text-blue-600 border-blue-200">
+                              <Brain className="h-3 w-3 mr-1" />
+                              Optimized
+                            </Badge>
+                          )}
+                          {editMode && (
+                            <div className="flex items-center space-x-1">
+                              <Button
+                                size="sm"
+                                variant="outline"
+                                onClick={() => setEditingStep(step)}
+                              >
+                                <Edit3 className="h-4 w-4" />
+                              </Button>
+                              <Button
+                                size="sm"
+                                variant="outline"
+                                onClick={() => handleDeleteStep(step.step_number)}
+                                className="text-red-600 hover:text-red-700"
+                              >
+                                <Trash2 className="h-4 w-4" />
+                              </Button>
+>>>>>>> f90bd2a678a3c3dfbdbb9b9a8b54a2f88137d77b
                             </div>
                           )}
                         </div>
                       </div>
+<<<<<<< HEAD
                     </CardContent>
 
                     {index < roadmap.steps.length - 1 && (
@@ -913,6 +1080,61 @@ export default function RoadmapView() {
             </TabsContent>
           </Tabs>
           )}
+=======
+                      
+                      <p className={`text-gray-700 mb-4 ${isCompleted ? 'line-through text-gray-500' : ''}`}>
+                        {step.description}
+                      </p>
+                      
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-4 text-sm text-gray-500">
+                          <div className="flex items-center">
+                            <Clock className="h-4 w-4 mr-1" />
+                            {step.estimated_time_minutes} min
+                          </div>
+                          <div className="flex items-center space-x-1">
+                            {step.tags?.slice(0, 2).map(tag => (
+                              <Badge key={tag} variant="outline" className="text-xs">
+                                {tag}
+                              </Badge>
+                            ))}
+                          </div>
+                          {isCompleted && step.completed_at && (
+                            <div className="flex items-center text-green-600">
+                              <CheckCircle2 className="h-4 w-4 mr-1" />
+                              Completed {new Date(step.completed_at).toLocaleDateString()}
+                            </div>
+                          )}
+                        </div>
+                        
+                        <Button 
+                          variant={isCompleted ? "outline" : "default"} 
+                          size="sm"
+                          asChild
+                        >
+                          <a 
+                            href={step.resource_url} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                          >
+                            <ExternalLink className="h-4 w-4 mr-2" />
+                            {isCompleted ? 'Review' : 'Start Learning'}
+                          </a>
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+                
+                {index < roadmap.steps.length - 1 && (
+                  <div className="flex justify-center pb-4">
+                    <div className="w-0.5 h-6 bg-gray-200"></div>
+                  </div>
+                )}
+              </Card>
+            );
+          })}
+>>>>>>> f90bd2a678a3c3dfbdbb9b9a8b54a2f88137d77b
         </div>
 
         {/* Completion Message */}
